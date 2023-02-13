@@ -4,7 +4,7 @@ Repository for calibration, simulation, and validity assessment of a
 Hybrid Discrete-Continuum model of cancer growth with applications in
 3D cancer cell cultures ([paper](TBA)).
 The code in this repository is similar to the [HyMetaGrowth](https://nmdimitriou.github.io/HyMetaGrowth/)
-repository, except that it is adapted to include the treatment.
+repository, except that it is adapted to include treatment effects.
 
 ### Table of Contents
 - **[Code and data](#code-and-data)**<br>
