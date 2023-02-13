@@ -30,7 +30,7 @@ repository, except that it is adapted to include the treatment.
 
 - The data associated with this study can be found on the [FigShare repository](https://figshare.com/projects/3D-GROWTH-MDA-MB-231-SERIES-12/118989).
 
-- Details on the data processing and segmentation pipeline can be found [here](https://www.biorxiv.org/content/10.1101/2021.07.29.454312v1).
+- Details on the data processing and segmentation pipeline can be found [here](https://t.co/vd68g8qOTv).
 
 ## Prerequisites
   - [CUDA version ≥ 10](https://developer.nvidia.com/cuda-downloads)
