@@ -227,4 +227,4 @@ For any question feel free to contact me at: nikolaos.dimitriou [at] mail.mcgill
 
 ## Citing
 If you intend to use this code in your publications, please cite:
->TBA
+>Dimitriou, N. M., Flores-Torres, S., Kyriakidou, M., Kinsella, J. M., & Mitsis, G. D. (2023). Cancer cell sedimentation in 3D cultures reveals active migration regulated by self-generated gradients and adhesion sites. BioRxiv. https://doi.org/10.1101/2023.02.15.528731
