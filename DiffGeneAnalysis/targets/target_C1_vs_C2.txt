@@ -1,0 +1,5 @@
+	condition	type
+C1R1	untreated_day2	paired-end
+C1R2	untreated_day2	paired-end
+C2R1	untreated_day4	paired-end
+C2R2	untreated_day4	paired-end

@@ -1,0 +1,13 @@
+	condition	type
+C1R1	C1	paired-end
+C1R2	C1	paired-end
+C2R1	C2	paired-end
+C2R2	C2	paired-end
+Pac0.0005muMR1	Pac0.0005	paired-end
+Pac0.0005muMR2	Pac0.0005	paired-end
+Pac0.005muMR1	Pac0.005	paired-end
+Pac0.005muMR2	Pac0.005	paired-end
+Pac0.05muMR1	Pac0.05	paired-end
+Pac0.05muMR2	Pac0.05	paired-end
+Pac0.5muMR1	Pac0.5	paired-end
+Pac0.5muMR2	Pac0.5	paired-end

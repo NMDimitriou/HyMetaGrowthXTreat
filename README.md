@@ -2,7 +2,8 @@
 
 Repository for calibration, simulation, and validity assessment of a
 Hybrid Discrete-Continuum model of cancer growth with applications in
-3D cancer cell cultures ([paper](TBA)).
+3D cancer cell cultures. The code for the Differential gene expression analysis associated with
+this [paper](https://doi.org/10.1101/2023.02.15.528731) is included.
 The code in this repository is similar to the [HyMetaGrowth](https://nmdimitriou.github.io/HyMetaGrowth/)
 repository, except that it is adapted to include treatment effects.
 

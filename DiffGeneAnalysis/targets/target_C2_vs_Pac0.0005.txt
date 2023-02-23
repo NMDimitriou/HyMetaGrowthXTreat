@@ -1,0 +1,5 @@
+	condition	type
+C2R1	untreated_day4	paired-end
+C2R2	untreated_day4	paired-end
+Pac0.0005muMR1	treated0_0005_day4	paired-end
+Pac0.0005muMR2	treated0_0005_day4	paired-end
