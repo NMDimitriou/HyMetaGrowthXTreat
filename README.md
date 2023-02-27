@@ -27,7 +27,6 @@ repository, except that it is adapted to include treatment effects.
 - **[A note from the author](#a-note-from-the-author)**<br>
 
 ## Code and data
-- The associated code can be found in the repository of [HyMetaGrowth](https://github.com/NMDimitriou/HyMetaGrowth).
 
 - The data associated with this study can be found on the [FigShare repository](https://figshare.com/projects/3D-GROWTH-MDA-MB-231-SERIES-12/118989).
 
