@@ -7,6 +7,8 @@ Hybrid Discrete-Continuum model of cancer growth with applications in
 ## Code and data
 - The associated code can be found in the repository of [HyMetaGrowthXTreat](https://github.com/NMDimitriou/HyMetaGrowthXTreat).
 
+- The code for the image processing and segmentation pipeline can be found in [this repository](https://github.com/NMDimitriou/3D-Preprocessing-Nuclei-Segmentation)
+
 - The 3D cell culture data associated with this study can be found on the [FigShare repository](https://figshare.com/projects/3D-GROWTH-MDA-MB-231-SERIES-12/118989).
 
 - The RNA-sequencing data associated with this study can be found in the NCBI GEO database under the accession number: [GSE223350](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE223350). The code used for the differential gene expression analysis can be found in [DiffGeneAnalysis](https://github.com/NMDimitriou/HyMetaGrowthXTreat/tree/main/DiffGeneAnalysis).
