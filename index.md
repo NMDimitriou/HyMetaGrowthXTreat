@@ -7,7 +7,7 @@ Hybrid Discrete-Continuum model of cancer growth with applications in
 ## Code and data
 - The code for the hybrid model simulation, the calibration and validation steps can be found in the repository of [HyMetaGrowthXTreat](https://github.com/NMDimitriou/HyMetaGrowthXTreat).
 
-- The code for the image processing and segmentation pipeline can be found in [3D-Preprocessing-Nuclei-Segmentation repository](https://github.com/NMDimitriou/3D-Preprocessing-Nuclei-Segmentation). - Details on the image processing and segmentation pipeline can be found [here](https://t.co/vd68g8qOTv).
+- The code for the image processing and segmentation pipeline can be found in [3D-Preprocessing-Nuclei-Segmentation repository](https://github.com/NMDimitriou/3D-Preprocessing-Nuclei-Segmentation). Details on the image processing and segmentation pipeline can be found [here](https://t.co/vd68g8qOTv).
 
 - The 3D cell culture data associated with this study can be found in the [FigShare repository](https://figshare.com/projects/3D-GROWTH-MDA-MB-231-SERIES-12/118989).
 
