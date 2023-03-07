@@ -212,7 +212,7 @@ double simulate(DataArray& host, DataArray& device1, DataArray& device2, ExpData
             c++;
 			cudaEventRecord(start, 0);
         }
-        if (i % int(0.1/id.dt_imp) == 0)
+        if (i % int(1.0/id.dt_imp) == 0)
         {
             ExportCheckpoint("a_double","b_double","ecm_double",host,device1,i*id.dt_imp,0);
         }
