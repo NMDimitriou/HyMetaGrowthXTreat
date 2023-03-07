@@ -55,7 +55,7 @@ void hostInitializeParent(DataArray& host, char* hostname)
 
 	#if ( MODEL == FK || MODEL == KSC || MODEL == KSMD || MODEL == KSCMD)
 	char filename[4096];
-    sprintf(filename, "%s/new_dens_%s_D0.raw", host.path, host.dat);
+    sprintf(filename, "%s/%s.raw", host.path, host.dat);
 	FILE *f = fopen(filename,"rb");
 	if (f!=NULL)
 	{
@@ -114,7 +114,7 @@ void hostInitializeParent(DataArray& host, char* hostname)
 	double *bic;
 	bic = (double*) malloc(host.zmax * sizeof(double));
 	FILE *bIC;
-	bIC = fopen("../../../IC/fIC.txt", "r");
+	bIC = fopen("../../IC/fIC.txt", "r");
 	
 	if (bIC!=NULL)
     {

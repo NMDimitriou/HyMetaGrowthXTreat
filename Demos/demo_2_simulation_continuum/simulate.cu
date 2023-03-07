@@ -197,7 +197,7 @@ double simulate(DataArray& host, DataArray& device1, DataArray& device2, ExpData
             float mpoints = (float)(exportInterval[c]/(*host.new_dt)) * host.xmax * host.ymax * host.zmax / 1.0e6f;//reportInterval , exportInterval[c]                  
             printf("t_sim = %.2f: %f Mpoints/s \n", i*id.dt_imp, mpoints / elapsed);
 			printf("function calls = %d\n",ct);
-	        ExportCheckpoint("a_double","b_double","ecm_double",host,device1,ceil(i*id.dt_imp),1);
+	        ExportCheckpoint("a_double","b_double","ecm_double",host,device1,ceil(i*id.dt_imp),0);
 
 			#if (STUDY == CALIBRATION)
 			printf("Calculating SSE/RMSE/NRMSE.\n");

@@ -517,7 +517,7 @@ void ExportCheckpoint(const char* name_a, const char* name_b, const char* name_c
 	for(int i=0;i<total;i++){
 		suma += host.a_intm[i];
 	}
-	printf("summed density = %lf",suma);
+	printf("summed density = %lf\n",suma);
 
 #endif
 
