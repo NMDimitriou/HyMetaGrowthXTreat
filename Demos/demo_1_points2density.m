@@ -1,5 +1,5 @@
 %% Compute density from spatial distributions of cells
-% Author: Nikolaos M. Dimitriou, 
+% Author: Nikolaos M. Dimitriou,
 % McGill University, 2020
 
 clear; clc; close all;
@@ -10,7 +10,7 @@ dx=15; % the approximate size of the cell in μm
 sz = ceil([2500/dx,2500/dx,917/dx]); % scale to the cell size
 
 % Let's create some cells
-%{
+%
 center = [2500/2, 2500/2, 917/2];
 coords1 = randi([-400,400],[1000,1]) + center(1);
 coords2 = randi([-400,400],[1000,1]) + center(2);
@@ -60,7 +60,7 @@ coords3 = randi([-90,120],[300,1]) + round(center(3)/5);
 figure;
 plot3(coords1,coords2,coords3,'.')
 writematrix([coords1 coords2 coords3],'test_coordinates_D14.txt')
-%}
+
 
 % For the interpolation
 x=linspace(0,2.5,sz(1));
@@ -88,7 +88,7 @@ for i=1:ndays
     coord.(day_names{i})(:,3  ) = ceil(coord.(day_names{i})(:,3  ) ./dsz);
     %shift all coordinates by 1 to remove zeros
     coord.(day_names{i})(:,1:2) = coord.(day_names{i})(:,1:2)+1;
-    
+
     figure;
     plot3(coord.(day_names{i})(:,1),coord.(day_names{i})(:,2),coord.(day_names{i})(:,3),'.')
 end
@@ -109,10 +109,10 @@ end
 
 %% Plot
 disp('Plotting density...')
-    
+
 cmap=flipud(winter(50))';
 depth = 0.2;
-    
+
 for i=1:ndays
     disp([' -> ' day_names{i}])
     figure;
@@ -121,7 +121,7 @@ for i=1:ndays
     surf3     = isosurface(xq,xq,zq,PV.(day_names{i}),isovalue3);
     p3        = patch(surf3);
     isonormals(xq,xq,zq,PV.(day_names{i}),p3);
-    set(p3,'FaceColor',cmap(:,end-3),'EdgeColor','none','FaceAlpha',0.4);   
+    set(p3,'FaceColor',cmap(:,end-3),'EdgeColor','none','FaceAlpha',0.4);
     xlim([0 2.5])
     ylim([0 2.5])
     zlim([0 0.917])
@@ -130,9 +130,9 @@ end
 %% Save matrices to binary files
 
 disp('Saving...')
-stat = mkdir('IC'); 
+stat = mkdir('IC');
 for i=1:ndays
-    fileid = fopen(['IC/new_dens_' day_names{i} '.raw'],'w'); 
+    fileid = fopen(['IC/new_dens_' day_names{i} '.raw'],'w');
     fwrite(fileid,PV.(day_names{i}),'double');
     fclose(fileid);
 end
