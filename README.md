@@ -86,7 +86,8 @@ to the approximate cell size (default is dx=15 μm). Then, the scaled space is i
 to a 480x480x176 grid size that will be introduced to the simulator.
 
 2. Specify the directory and common prefix of the files that the coordinated of the cells.
-The default directory and files can be found in the `res_coord_scaled` directory.
+The default directory and files can be found in the `coordinates_all` directory (pending 
+coordinates for treatment data).
 You can run the script with the default arguments and it will produce the density
 profiles of the corresponding coordinates. The output can be found in the
 `New_Density_double_precision`.
