@@ -151,7 +151,7 @@ Then, copy the produced `sample` file from the `TMCMC` directory one directory a
 3. **Optimizations.** Go to `Calibration_Continuum/model` directory. In the
 `Makefile` comment the lines `SIMU_OPTION += -DSAVE_DATA` and
 `SIMU_OPTION += -DNRMSE` to make the simulation faster. Compile the code by
-running `make`. You can plot the resulted density in [Paraview](https://www.paraview.org/).
+running `make`. 
 
 4. The `doall.sh` file will be called by the TMCMC algorithm. This file
 runs the simulation. Make sure that the `./main` command (in the `doall.sh`)
