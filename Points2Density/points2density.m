@@ -1,8 +1,133 @@
-%% Plot distances and number of nuclei for all time points, in each sample
+%% Density calculation from 3D point coordinates
 % Author: Nikolaos M. Dimitriou, 
 % McGill University, 2020
 clear; clc; close all;
 
+drc = 'coordinates_all/';
+filelist = dir(fullfile(drc, '**/*.*'));  %get list of files and folders in any subfolder
+filelist = filelist(~[filelist.isdir]);  %remove folders from list
+FileName = fullfile({filelist.folder}, {filelist.name});
+
+%split string to keep only the first part as name and the time-points
+splitStr = regexp({filelist.name},'[\-\.]','split')'; 
+splitStr = vertcat(splitStr{:});
+
+%extract time-points from filenames, i.e. D#
+tp = unique(splitStr(:,2)); 
+tp = natsort(tp);
+
+%keep also the numeric part of the time-point
+time = regexp(tp,'D','split')';
+time = vertcat(time{:});
+time = {time{:,2}}';
+for i=1:length(time)
+    time{i}=str2num(time{i});
+end
+time = cell2mat(time);
+lt   = length(time) ;
+
+% read the files
+for i=1:length(splitStr)
+    coord.(splitStr{i,1}).(splitStr{i,2}) = readmatrix([FileName{i}]);
+end
+
+group = fieldnames(coord);
+lg    = length(group);
+disp(['Number of datasets: ' num2str(length(group))]);
+
+% rearrange
+for i=1:length(fieldnames(coord))
+    coord.(group{i}) = orderfields(coord.(group{i}),tp);
+end
+
+
+%run plotopt.m
+% For grid points 480x480x176 multiples of 16 (2500x2500x917um space dimensions)
+dsxy = 5.208333333333333; % downscale parameter for xy-plane
+dsz  = 917/176; % downscale parameter for z-dimension
+dx=15;
+sz = ceil([2500/dx,2500/dx,917/dx]);
+
+% For the interpolation
+x=linspace(0,2.5,sz(1));
+z=linspace(0,0.917,sz(3));
+[X,Y,Z] = ndgrid(x,x,z);
+szq = [480,480,176];
+xq=linspace(0,2.5,szq(1));
+zq=linspace(0,0.917,szq(3));
+[Xq,Yq,Zq] = ndgrid(xq,xq,zq);
+
+disp(['Scaling coordinates with dxyz=' num2str(dx)]);
+for i=1:lg
+    for j=1:lt
+        % count the cells
+        count.(group{i}).(tp{j})=length(coord.(group{i}).(tp{j})(:,1));
+        % Scale them in order for cells to be points
+        coord.(group{i}).(tp{j})(:,1:2)=ceil(coord.(group{i}).(tp{j})(:,1:2)./dsxy);
+        coord.(group{i}).(tp{j})(:,3  )=ceil(coord.(group{i}).(tp{j})(:,3  )./dsz) ;
+        % Shift all coordinates by 1 to remove zeros
+        coord.(group{i}).(tp{j})(:,1:2)=coord.(group{i}).(tp{j})(:,1:2)+1;
+    end
+end
+
+
+%% Convert centroids to density
+disp('Converting points to density...')
+[X1,X2,X3] = meshgrid(1:szq(1),1:szq(2),1:szq(3));
+d          = 3;
+grid       = reshape([X1(:),X2(:),X3(:)],szq(1)*szq(2)*szq(3),d);
+PV = {};
+%parpool(lg);
+for i=1:lg  
+    for j=1:lt
+		disp(['Calculating density for ' group{i} ' at day ' tp{j}]);    
+		cmt = coord.(group{i}).(tp{j}); 
+        dmt = akde(cmt,grid);
+        PV{i,j} = dmt*count.(group{i}).(tp{j})*(15^3)/(5.21^3); % convert PDF to Density
+		disp(['min PV = ' num2str(min(PV{i,j}(:)))])
+        disp(['max PV = ' num2str(max(PV{i,j}(:)))])
+    end    
+end
+%delete(gcp('nocreate'));
+
+
+%% Save matrices to binary files
+
+disp('Saving...')
+for i=1:lg 
+    stat = mkdir('New_Density_double_precision',group{i}); 
+    for j=1:lt
+        fileid = fopen(['New_Density_double_precision/' group{i} '/' ...
+		'new_dens_' group{i} '_' tp{j} '.raw'],'w'); 
+        fwrite(fileid,PV{i,j},'double');
+        fclose(fileid);
+    end
+end
+
+disp('Finished!')
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% END OF FILE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%{
+%%
 tp    = {'D0' 'D2' 'D5' 'D7' 'D9' 'D12' 'D14'};
 % Series 1
 group = {'A*C*.txt','A*E*.txt','B*E*.txt','B*N*.txt','B*W*.txt','F*W*.txt'};
@@ -166,3 +291,4 @@ end
 
 disp('Finished!')
 %//////
+%}
