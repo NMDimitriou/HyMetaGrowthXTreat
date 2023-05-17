@@ -4,7 +4,7 @@
 clear; clc; close all;
 
 drc = 'coordinates_all/';
-filelist = dir(fullfile(drc, '**/*.*'));  %get list of files and folders in any subfolder
+filelist = dir(fullfile(drc, '**/*.txt'));  %get list of files and folders in any subfolder
 filelist = filelist(~[filelist.isdir]);  %remove folders from list
 FileName = fullfile({filelist.folder}, {filelist.name});
 
